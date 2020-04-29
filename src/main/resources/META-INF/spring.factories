@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ritense.commonground.connectors.conduction.verzoeken.VerzoekenComponentAutoConfiguration,\
+  com.ritense.commonground.connectors.conduction.adressen.AdressenComponentAutoConfiguration
