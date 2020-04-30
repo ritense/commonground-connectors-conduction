@@ -31,18 +31,18 @@ public class VerzoekenComponent {
         return response.getBody();
     }
 
-    public List changeVerzoekenStatus(String apiKey, String requestTypeUrl, String organizationId, VerzoekStatus status){
+    public List changeVerzoekenStatus(String apiKey, String verzoekId, String organizationId, VerzoekStatus status){
         JSONObject requestBody = new JSONObject();
         requestBody.put("status", status);
+        requestBody.put("organization", "https://wrc.processen.zaakonline.nl/organizations/" + organizationId);
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", apiKey);
-        headers.set("organization", "https://wrc.processen.zaakonline.nl/organizations/" + organizationId);
         HttpEntity request = new HttpEntity(requestBody, headers);
 
         ResponseEntity<List> response = restTemplate.exchange(
-                BASE_URL + "requests?requestType=" +  requestTypeUrl,
+                BASE_URL + "requests/" +  verzoekId,
                 HttpMethod.PUT,
                 request,
                 List.class
