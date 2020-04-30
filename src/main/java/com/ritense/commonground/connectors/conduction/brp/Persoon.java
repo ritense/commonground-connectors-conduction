@@ -15,6 +15,9 @@ public class Persoon {
     @JsonProperty("naam")
     private PersoonsNaam naam;
 
+    @JsonProperty("geboorte")
+    private PersoonsGeboorte geboorte;
+
     public Persoon() {
     }
 
@@ -26,14 +29,64 @@ public class Persoon {
         return naam;
     }
 
+    public PersoonsGeboorte getGeboorte() {
+        return geboorte;
+    }
+
     public class PersoonsNaam {
+        @JsonProperty("geslachtnaam")
         private String geslachtsnaam;
+
+        @JsonProperty("voorletters")
+        private String voorletters;
+
+        @JsonProperty("voorvoegsel")
+        private String voorvoegsel;
+
+        @JsonProperty("aanhef")
+        private String aanhef;
 
         public PersoonsNaam() {
         }
 
         public String getGeslachtsnaam() {
             return geslachtsnaam;
+        }
+
+        public String getVoorletters() {
+            return voorletters;
+        }
+
+        public String getVoorvoegsel() {
+            return voorvoegsel;
+        }
+
+        public String getAanhef() {
+            return aanhef;
+        }
+    }
+
+    public class PersoonsGeboorte{
+        @JsonProperty("datum")
+        private GeboorteDatum datum;
+
+        public PersoonsGeboorte() {
+        }
+
+        public GeboorteDatum getDatum() {
+            return datum;
+        }
+
+        public class GeboorteDatum{
+            @JsonProperty("date")
+            private String date;
+
+            public GeboorteDatum() {
+            }
+
+            public String getDate() {
+                return date;
+            }
         }
     }
 }
