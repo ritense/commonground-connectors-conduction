@@ -7,6 +7,7 @@ A Spring Boot library including a collection of connectors to connect with https
 ### Which components are supported?
 At the moment this library includes a connector for the following components:
 - Adres Component
+- Basis Registratie Personen Component
 - Verzoek Registratie Component
 
 ### How do I use it?
