@@ -14,7 +14,7 @@ public class BasisRegistratiePersonenComponent {
         this.restTemplate = restTemplate;
     }
 
-    public List getPersonByBsn(String apiKey, String bsn){
+    public List<Persoon> getPersonByBsn(String apiKey, String bsn){
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", apiKey);
