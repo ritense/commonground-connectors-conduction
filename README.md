@@ -8,3 +8,9 @@ A Spring Boot library including a collection of connectors to connect with https
 At the moment this library includes a connector for the following components:
 - Adres Component
 - Verzoek Registratie Component
+
+### How do I use it?
+- Clone this repository
+- Run the Gradle command publishMavenPublicationToMavenLocal
+- Include the following dependency in your Spring Boot project: 
+```implementation "com.ritense.commonground.connectors:conduction:0.0.1-SNAPSHOT"```
