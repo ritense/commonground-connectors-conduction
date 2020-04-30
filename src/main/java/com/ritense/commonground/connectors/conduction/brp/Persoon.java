@@ -34,7 +34,7 @@ public class Persoon {
     }
 
     public class PersoonsNaam {
-        @JsonProperty("geslachtnaam")
+        @JsonProperty("geslachtsnaam")
         private String geslachtsnaam;
 
         @JsonProperty("voorletters")
