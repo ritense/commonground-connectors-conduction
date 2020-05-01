@@ -1,61 +1,76 @@
 package com.ritense.commonground.connectors.conduction.adressen;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class AdressenComponent {
     private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;
 
-    public AdressenComponent(RestTemplate restTemplate) {
+    public AdressenComponent(
+            RestTemplate restTemplate,
+            ObjectMapper objectMapper
+    ) {
         this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
     }
 
-    public List getBagObjectByAdress(String apiKey, String postcode, String housenumber){
+    public Adres getBagObjectByAdress(String apiKey, String postcode, String housenumber) throws JsonProcessingException {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", apiKey);
         HttpEntity request = new HttpEntity(headers);
 
-        ResponseEntity<List> response = restTemplate.exchange(
+        ResponseEntity<String> response = restTemplate.exchange(
                 " https://as.processen.zaakonline.nl/adressen?postcode=" + postcode + "&huisnummer=" + housenumber,
                 HttpMethod.GET,
                 request,
-                List.class
+                String.class
         );
-        return response.getBody();
+
+        Adres adres = objectMapper.readValue(response.getBody(), Adres.class);
+
+        return adres;
     }
 
-    public List getBagObjectByAdress(String apiKey, String postcode, String houseNumber, String houseNumberAddition){
+    public Adres getBagObjectByAdress(String apiKey, String postcode, String houseNumber, String houseNumberAddition) throws JsonProcessingException {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", apiKey);
         HttpEntity request = new HttpEntity(headers);
 
-        ResponseEntity<List> response = restTemplate.exchange(
+        ResponseEntity<String> response = restTemplate.exchange(
                 " https://as.processen.zaakonline.nl/adressen?postcode=" + postcode + "&huisnummer=" + houseNumber + "&huisnummertoevoeging=" + houseNumberAddition,
                 HttpMethod.GET,
                 request,
-                List.class
+                String.class
         );
-        return response.getBody();
+        Adres adres = objectMapper.readValue(response.getBody(), Adres.class);
+
+        return adres;
     }
 
-    public List getBagObjectByBagID(String apiKey, String bagID){
+    public Adres getBagObjectByBagID(String apiKey, String bagID) throws JsonProcessingException {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", apiKey);
         HttpEntity request = new HttpEntity(headers);
 
-        ResponseEntity<List> response = restTemplate.exchange(
+        ResponseEntity<String> response = restTemplate.exchange(
                 "https://as.processen.zaakonline.nl/adressen?bagid=" + bagID,
                 HttpMethod.GET,
                 request,
-                List.class
+                String.class
         );
-        return response.getBody();
+        Adres adres = objectMapper.readValue(response.getBody(), Adres.class);
+
+        return adres;
     }
 }

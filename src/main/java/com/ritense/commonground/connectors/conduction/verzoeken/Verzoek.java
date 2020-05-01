@@ -3,6 +3,9 @@ package com.ritense.commonground.connectors.conduction.verzoeken;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Verzoek {
 
@@ -26,7 +29,7 @@ public class Verzoek {
         private String datum;
 
         @JsonProperty("wie")
-        private String wie;
+        private ArrayList wie;
 
         @JsonProperty("adress")
         private String adress;
@@ -47,7 +50,7 @@ public class Verzoek {
             return datum;
         }
 
-        public String getWie() {
+        public ArrayList getWie() {
             return wie;
         }
 
