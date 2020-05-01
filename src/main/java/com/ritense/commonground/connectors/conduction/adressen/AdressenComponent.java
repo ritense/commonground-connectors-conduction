@@ -51,7 +51,7 @@ public class AdressenComponent {
         HttpEntity request = new HttpEntity(headers);
 
         ResponseEntity<List> response = restTemplate.exchange(
-                " https://as.processen.zaakonline.nl/adressen?bagid=" + bagID,
+                "https://as.processen.zaakonline.nl/adressen?bagid=" + bagID,
                 HttpMethod.GET,
                 request,
                 List.class

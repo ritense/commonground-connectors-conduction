@@ -25,22 +25,50 @@ public class Verzoek {
         @JsonProperty("datum")
         private String datum;
 
-        @JsonProperty("verhuizenden")
-        private String verhuizenden;
+        @JsonProperty("wie")
+        private String wie;
 
         @JsonProperty("adress")
         private String adress;
+
+        @JsonProperty("email")
+        private String email;
+
+        @JsonProperty("tel")
+        private String tel;
+
+        @JsonProperty("eigenaar")
+        private Boolean eigenaar;
+
+        @JsonProperty("ingangsdatum")
+        private String ingangsdatum;
 
         public String getDatum() {
             return datum;
         }
 
-        public String getVerhuizenden() {
-            return verhuizenden;
+        public String getWie() {
+            return wie;
         }
 
         public String getAdress() {
             return adress;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public String getTel() {
+            return tel;
+        }
+
+        public Boolean getEigenaar() {
+            return eigenaar;
+        }
+
+        public String getIngangsdatum() {
+            return ingangsdatum;
         }
     }
 
