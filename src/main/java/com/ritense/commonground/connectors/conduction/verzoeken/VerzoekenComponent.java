@@ -1,10 +1,13 @@
 package com.ritense.commonground.connectors.conduction.verzoeken;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import org.json.JSONObject;
+import com.ritense.commonground.connectors.conduction.brp.Persoon;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -31,6 +34,7 @@ public class VerzoekenComponent {
                 request,
                 List.class
         );
+
         return response.getBody();
     }
 
