@@ -1,5 +1,6 @@
 package com.ritense.commonground.connectors.conduction.verzoeken;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -14,28 +15,32 @@ import java.util.List;
 
 public class VerzoekenComponent {
     private final RestTemplate restTemplate;
+    private final ObjectMapper objectMapper;
     private static final String BASE_URL = "https://vrc.processen.zaakonline.nl/";
 
     public VerzoekenComponent(
-            RestTemplate restTemplate
-    ) {
+            RestTemplate restTemplate,
+            ObjectMapper objectMapper) {
         this.restTemplate = restTemplate;
+        this.objectMapper = objectMapper;
     }
 
-    public List getAllVerzoekenByRequestType(String apiKey, String requestTypeUrl){
+    public List<Verzoek> getAllVerzoekenByRequestType(String apiKey, String requestTypeUrl) throws JsonProcessingException {
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         headers.set("Authorization", apiKey);
         HttpEntity request = new HttpEntity(headers);
 
-        ResponseEntity<List> response = restTemplate.exchange(
+        ResponseEntity<String> response = restTemplate.exchange(
                 BASE_URL + "requests?requestType=" +  requestTypeUrl,
                 HttpMethod.GET,
                 request,
-                List.class
+                String.class
         );
 
-        return response.getBody();
+        List<Verzoek> verzoek = objectMapper.readValue(response.getBody(), new TypeReference<ArrayList<Verzoek>>() {});
+
+        return verzoek;
     }
 
     public Boolean changeVerzoekenStatus(String apiKey, String verzoekId, String organizationId, VerzoekStatus status){

@@ -11,8 +11,9 @@ public class VerzoekenComponentAutoConfiguration {
 
     @Bean
     public VerzoekenComponent verzoekenComponent(
-        final RestTemplate restTemplate
-    ){
-        return new VerzoekenComponent(restTemplate);
+            final RestTemplate restTemplate,
+            final ObjectMapper objectMapper
+            ){
+        return new VerzoekenComponent(restTemplate, objectMapper);
     }
 }
