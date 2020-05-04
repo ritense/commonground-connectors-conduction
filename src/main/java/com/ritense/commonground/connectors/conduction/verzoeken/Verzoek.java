@@ -19,14 +19,10 @@ public class Verzoek {
     @JsonProperty("properties")
     private Properties properties;
 
-    @JsonCreator
-    public Verzoek(String id, String status, Properties properties) {
-        this.id = id;
-        this.status = status;
-        this.properties = properties;
+    public Verzoek() {
     }
 
-    public static class Properties {
+    public class Properties {
         @JsonProperty("datum")
         @JsonInclude(JsonInclude.Include.NON_NULL)
         private String datum;
@@ -55,23 +51,7 @@ public class Verzoek {
         @JsonInclude(JsonInclude.Include.NON_NULL)
         private String ingangsdatum;
 
-        @JsonCreator
-        public Properties(
-                String datum,
-                ArrayList wie,
-                String adress,
-                String email,
-                String tel,
-                Boolean eigenaar,
-                String ingangsdatum
-        ) {
-            this.datum = datum;
-            this.wie = wie;
-            this.adress = adress;
-            this.email = email;
-            this.tel = tel;
-            this.eigenaar = eigenaar;
-            this.ingangsdatum = ingangsdatum;
+        public Properties() {
         }
 
         public String getDatum() {
