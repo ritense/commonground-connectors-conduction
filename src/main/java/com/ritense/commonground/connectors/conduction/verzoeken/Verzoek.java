@@ -1,6 +1,7 @@
 package com.ritense.commonground.connectors.conduction.verzoeken;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.lang.reflect.Array;
@@ -26,24 +27,31 @@ public class Verzoek {
         }
 
         @JsonProperty("datum")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         private String datum;
 
         @JsonProperty("wie")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         private ArrayList wie;
 
         @JsonProperty("adress")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         private String adress;
 
         @JsonProperty("email")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         private String email;
 
         @JsonProperty("tel")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         private String tel;
 
         @JsonProperty("eigenaar")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         private Boolean eigenaar;
 
         @JsonProperty("ingangsdatum")
+        @JsonInclude(JsonInclude.Include.NON_NULL)
         private String ingangsdatum;
 
         public String getDatum() {

@@ -47,7 +47,7 @@ public class VerzoekenComponent {
         ObjectNode requestBody = new ObjectMapper().createObjectNode();
         requestBody.put("status", String.valueOf(status));
         requestBody.put("organization", "https://wrc.processen.zaakonline.nl/organizations/" + organizationId);
-        requestBody.put("requeustType", "https://vtc.processen.zaakonline.nl/request_types/2bfb3cea-b5b5-459c-b3e0-e1100089a11a");
+        requestBody.put("requestType", "https://vtc.processen.zaakonline.nl/request_types/2bfb3cea-b5b5-459c-b3e0-e1100089a11a");
         requestBody.putArray("submitters");
 
         HttpHeaders headers = new HttpHeaders();
